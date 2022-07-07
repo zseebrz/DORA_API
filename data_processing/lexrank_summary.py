@@ -4,12 +4,14 @@ from sumy.summarizers.lex_rank import LexRankSummarizer
 
 
 
-#instantiate LexRank summarizer
-summarizer_lex = LexRankSummarizer()
 
 def generate_summary_lexrank(text, max_number_of_characters):
 
-    if max_number_of_characters <1:
+    #instantiate LexRank summarizer
+    summarizer_lex = LexRankSummarizer()
+
+
+    if max_number_of_characters < 1:
     	max_number_of_characters = 1200
     
     
@@ -72,7 +74,7 @@ def generate_summary_lexrank(text, max_number_of_characters):
         for i, sentence in enumerate(sentences):
             if no_of_chars < max_number_of_characters: #1200:
                 final_summary += str(sentence)
-                print(str(sentence))
+                #print(str(sentence))
                 i += 1
                 no_of_chars += len(str(sentence))   
                 #print(no_of_chars)
@@ -81,6 +83,7 @@ def generate_summary_lexrank(text, max_number_of_characters):
         #print(basename + '\x1b[32m OK\x1b[0m')
 
     except Exception as e:
+        #print (e)
         final_summary = "error"
         #print(basename + '\x1b[31m ERROR!\x1b[0m ' +str(e) )
     
